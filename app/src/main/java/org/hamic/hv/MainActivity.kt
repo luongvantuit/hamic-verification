@@ -1,9 +1,10 @@
 package org.hamic.hv
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 
-class MainActivity : AppCompatActivity() {
+import android.os.Bundle
+import org.hamic.internal.IActivity
+
+class MainActivity : IActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
