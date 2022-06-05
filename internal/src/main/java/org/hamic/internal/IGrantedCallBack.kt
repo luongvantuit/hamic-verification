@@ -1,5 +1,5 @@
 package org.hamic.internal
 
-interface IGrantedCallBack {
+fun interface IGrantedCallBack {
     fun on()
 }

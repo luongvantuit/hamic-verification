@@ -3,10 +3,8 @@ package org.hamic.hv
 
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import androidx.annotation.RequiresApi
 import org.hamic.internal.IActivity
-import org.hamic.internal.IGrantedCallBack
 
 class MainActivity : IActivity() {
     @RequiresApi(Build.VERSION_CODES.M)
