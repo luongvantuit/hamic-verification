@@ -14,7 +14,11 @@ abstract class IActivity : AppCompatActivity() {
     fun requestCameraPermission(
         context: Context,
         requestCode: Int? = requestCodeCameraPermission,
-        grantedCallBack: IGrantedCallBack?
+        grantedCallBack: IGrantedCallBack? = object : IGrantedCallBack {
+            override fun on() {
+
+            }
+        }
     ) {
         if (ContextCompat.checkSelfPermission(
                 context,

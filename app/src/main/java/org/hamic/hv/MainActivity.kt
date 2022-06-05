@@ -14,13 +14,8 @@ class MainActivity : IActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         requestCameraPermission(
-            context = this@MainActivity,
-            requestCode = requestCodeCameraPermission,
-            grantedCallBack = object : IGrantedCallBack {
-                override fun on() {
-
-                }
-            });
+            context = this@MainActivity
+        )
     }
 
 }
