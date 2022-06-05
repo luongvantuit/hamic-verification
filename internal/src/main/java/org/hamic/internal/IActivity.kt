@@ -13,7 +13,7 @@ abstract class IActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.M)
     fun requestCameraPermission(
         context: Context,
-        requestCode: Int = requestCodeCameraPermission,
+        requestCode: Int? = requestCodeCameraPermission,
         grantedCallBack: IGrantedCallBack?
     ) {
         if (ContextCompat.checkSelfPermission(
@@ -23,8 +23,12 @@ abstract class IActivity : AppCompatActivity() {
         ) {
             grantedCallBack!!.on()
         } else {
-            requestPermissions(arrayOf(Manifest.permission.CAMERA), requestCode)
+            requestPermissions(arrayOf(Manifest.permission.CAMERA), requestCode!!)
         }
+    }
+
+    fun checkCameraPermission(context: Context): Int {
+        return ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA)
     }
 
     companion object {
