@@ -4,14 +4,14 @@ package org.hamic.hv
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.widget.Button
 import androidx.annotation.RequiresApi
+import androidx.appcompat.widget.AppCompatButton
 import org.hamic.internal.IActivity
 
 class MainActivity : IActivity() {
 
 
-    private lateinit var scannerQrCode: Button
+    private lateinit var scannerQrCode: AppCompatButton
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {

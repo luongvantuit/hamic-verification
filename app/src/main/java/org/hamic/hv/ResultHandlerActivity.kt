@@ -1,11 +1,16 @@
 package org.hamic.hv
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Base64
+import android.view.View
 import android.widget.ImageView
+import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatButton
+import androidx.appcompat.widget.Toolbar
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QueryDocumentSnapshot
 import org.hamic.core.MerkleTree
@@ -16,6 +21,8 @@ class ResultHandlerActivity : AppCompatActivity() {
     private val fireStore: FirebaseFirestore = FirebaseFirestore.getInstance()
 
     private lateinit var imgViewResult: ImageView
+    private lateinit var progressBarHandler: ProgressBar
+    private lateinit var goToHome: AppCompatButton
 
     private lateinit var id: String
     private lateinit var blockHash: String
@@ -29,6 +36,15 @@ class ResultHandlerActivity : AppCompatActivity() {
         imgHash = intent.getStringExtra("imgHash")!!
 
         imgViewResult = findViewById(R.id.image_view_result)
+        progressBarHandler = findViewById(R.id.progress_bar_handler)
+        goToHome = findViewById(R.id.button_go_to_home)
+        setSupportActionBar(findViewById<Toolbar>(R.id.toolbar))
+
+
+
+
+        supportActionBar!!.setDisplayShowTitleEnabled(false)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun onStart() {
@@ -85,6 +101,11 @@ class ResultHandlerActivity : AppCompatActivity() {
                     this@ResultHandlerActivity.finish()
                 }
             }
+        goToHome.setOnClickListener {
+            val intent: Intent = Intent(this@ResultHandlerActivity, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intent)
+        }
     }
 
     private fun verifyComplete(result: Boolean) {
@@ -102,5 +123,13 @@ class ResultHandlerActivity : AppCompatActivity() {
         } else {
             finish()
         }
+        progressBarHandler.visibility = View.GONE
+        imgViewResult.visibility = View.VISIBLE
+        goToHome.visibility = View.VISIBLE
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }

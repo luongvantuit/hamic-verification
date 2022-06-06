@@ -5,12 +5,12 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
-import android.widget.Button
+import androidx.appcompat.widget.AppCompatButton
 import org.hamic.internal.IActivity
 
 class PermissionCameraActivity : IActivity() {
 
-    private lateinit var goToString: Button
+    private lateinit var goToString: AppCompatButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
