@@ -4,10 +4,12 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.os.Handler
 import android.util.Base64
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.Toolbar
@@ -54,7 +56,7 @@ class ResultHandlerActivity : AppCompatActivity() {
                 if (blockchainIt.isSuccessful) {
                     val blockChainDocuments = blockchainIt.result
                     if (blockChainDocuments == null || blockChainDocuments.size() != 1) {
-                        this@ResultHandlerActivity.finish()
+                        verifyComplete(false)
                     } else {
                         for (blockChainDocument in blockChainDocuments) {
                             val merkleProofIds: IntArray = MerkleTree.getMerkleProof(id.toInt())
@@ -72,7 +74,7 @@ class ResultHandlerActivity : AppCompatActivity() {
                                                 }
                                             }
                                             if (merkleRoot == null) {
-                                                this@ResultHandlerActivity.finish()
+                                                verifyComplete(false)
                                             }
                                             imgHash =
                                                 if (merkleRoot!!.id.toInt() % 2 == 0) {
@@ -91,14 +93,13 @@ class ResultHandlerActivity : AppCompatActivity() {
                                                 .toString()
                                         )
                                     } else {
-                                        this@ResultHandlerActivity.finish()
+                                        verifyComplete(false)
                                     }
                                 }
-
                         }
                     }
                 } else {
-                    this@ResultHandlerActivity.finish()
+                    verifyComplete(false)
                 }
             }
         goToHome.setOnClickListener {
@@ -118,14 +119,19 @@ class ResultHandlerActivity : AppCompatActivity() {
                         val bitmap: Bitmap =
                             BitmapFactory.decodeByteArray(byteData, 0, byteData.size)
                         imgViewResult.setImageBitmap(bitmap)
+                        progressBarHandler.visibility = View.GONE
+                        imgViewResult.visibility = View.VISIBLE
+                        goToHome.visibility = View.VISIBLE
+                        Toast.makeText(this@ResultHandlerActivity, "Verify is success!", Toast.LENGTH_SHORT).show()
                     }
                 }
+
         } else {
-            finish()
+            Toast.makeText(this@ResultHandlerActivity, "Error! Can't verify.", Toast.LENGTH_LONG).show()
+            Handler().postDelayed({
+                finish()
+            }, 3000)
         }
-        progressBarHandler.visibility = View.GONE
-        imgViewResult.visibility = View.VISIBLE
-        goToHome.visibility = View.VISIBLE
     }
 
     override fun onSupportNavigateUp(): Boolean {

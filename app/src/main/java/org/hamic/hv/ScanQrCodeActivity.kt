@@ -3,6 +3,7 @@ package org.hamic.hv
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import com.budiyev.android.codescanner.AutoFocusMode
 import com.budiyev.android.codescanner.CodeScanner
 import com.budiyev.android.codescanner.CodeScannerView
@@ -34,6 +35,8 @@ class ScanQrCodeActivity : IActivity() {
             runOnUiThread {
                 val data = it.text.split(" ")
                 if (data.isEmpty() || data.size != 3 || "" in data) {
+
+                    Toast.makeText(this@ScanQrCodeActivity, "QR code format is wrong!", Toast.LENGTH_SHORT).show()
                     codeScanner.startPreview()
                 } else {
                     val intent: Intent =
