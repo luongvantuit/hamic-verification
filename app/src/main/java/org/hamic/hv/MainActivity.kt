@@ -13,7 +13,6 @@ class MainActivity : IActivity() {
 
     private lateinit var scannerQrCode: AppCompatButton
 
-    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
