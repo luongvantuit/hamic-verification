@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">HAMIC Verification</string>
+    <string name="scanner_qrcode">Scanner QR Code</string>
+    <string name="go_to_setting">Go to settings</string>
 </resources>

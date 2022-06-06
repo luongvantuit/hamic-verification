@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".PermissionCameraActivity">
 
     <Button
-        android:id="@+id/button_scanner_qr_code"
+        android:id="@+id/button_go_to_settings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/scanner_qrcode"
+        android:text="@string/go_to_setting"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

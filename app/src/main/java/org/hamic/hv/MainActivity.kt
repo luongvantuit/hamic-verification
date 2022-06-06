@@ -1,19 +1,41 @@
 package org.hamic.hv
 
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.widget.Button
 import androidx.annotation.RequiresApi
 import org.hamic.internal.IActivity
 
 class MainActivity : IActivity() {
+
+
+    private lateinit var scannerQrCode: Button
+
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        requestCameraPermission(
-            context = this@MainActivity
-        )
+
+        scannerQrCode = findViewById(R.id.button_scanner_qr_code)
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        scannerQrCode.setOnClickListener {
+            val intent: Intent = Intent(this@MainActivity, ScanQrCodeActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (!checkCameraPermission(this@MainActivity)) {
+            val intent = Intent(this@MainActivity, PermissionCameraActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 }

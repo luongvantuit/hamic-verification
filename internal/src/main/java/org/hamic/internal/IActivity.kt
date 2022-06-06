@@ -17,19 +17,18 @@ abstract class IActivity : AppCompatActivity() {
         grantedCallBack: IGrantedCallBack? = IGrantedCallBack {
         }
     ) {
-        if (ContextCompat.checkSelfPermission(
-                context,
-                Manifest.permission.CAMERA
-            ) == PackageManager.PERMISSION_GRANTED
-        ) {
+        if (checkCameraPermission(context)) {
             grantedCallBack!!.on()
         } else {
             requestPermissions(arrayOf(Manifest.permission.CAMERA), requestCode!!)
         }
     }
 
-    fun checkCameraPermission(context: Context): Int {
-        return ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA)
+    fun checkCameraPermission(context: Context): Boolean {
+        return ContextCompat.checkSelfPermission(
+            context,
+            Manifest.permission.CAMERA
+        ) == PackageManager.PERMISSION_GRANTED
     }
 
     companion object {
