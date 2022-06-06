@@ -17,3 +17,4 @@ rootProject.name = "HAMIC Verification"
 include ':app'
 include ':internal'
 include ':core'
+include ':model'

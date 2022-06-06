@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "898252160604",
+    "project_id": "verificationproject-e477d",
+    "storage_bucket": "verificationproject-e477d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:898252160604:android:56a181dcad7e02c767f099",
+        "android_client_info": {
+          "package_name": "org.hamic.hv"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "898252160604-l9nka2hu86jc359o667d11kcn30al42u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBshl-hUa9gAW2jqEQjExJaEq7gdTKeAI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "898252160604-l9nka2hu86jc359o667d11kcn30al42u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
