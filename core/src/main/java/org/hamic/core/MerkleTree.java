@@ -1,18 +1,9 @@
 package org.hamic.core;
 
 public class MerkleTree {
-    MerkleNode[] merkleNodes;
 
-    public MerkleTree() {
-    }
-
-    public MerkleTree(MerkleNode[] merkleNodes) {
-        this.merkleNodes = merkleNodes;
-    }
-
-
-    protected int[] getRoadToLeaf(int id) {
-        int h = (int) (Math.log(this.merkleNodes.length) / Math.log(2));
+    public static int[] getRoadToLeaf(int id) {
+        int h = (int) (Math.log(id + 1) / Math.log(2));
         int[] res_ids = new int[h];
         res_ids[h - 1] = id;
         for (int i = h - 2; i >= 0; i--) {
@@ -23,8 +14,8 @@ public class MerkleTree {
         return res_ids;
     }
 
-    protected int[] getMerkleProof(int id) {
-        int[] roadToLeaf_ids = this.getRoadToLeaf(id);
+    public static int[] getMerkleProof(int id) {
+        int[] roadToLeaf_ids = MerkleTree.getRoadToLeaf(id);
         int[] res_ids = new int[roadToLeaf_ids.length];
         int q = res_ids.length - 1;
         for (int i = 0; i < res_ids.length; i++) {
@@ -32,8 +23,6 @@ public class MerkleTree {
             else res_ids[q] = roadToLeaf_ids[i] - 1;
             q--;
         }
-
-
         return res_ids;
     }
 

@@ -5,11 +5,7 @@ import java.security.MessageDigest;
 
 public class Sha256 {
 
-    public Sha256() {
-
-    }
-
-    protected String calHash(String input_string) {
+    public static String calHash(String input_string) {
         try {
             final MessageDigest digest = MessageDigest.getInstance("SHA-256");
             final byte[] hash = digest.digest(input_string.getBytes(StandardCharsets.UTF_8));

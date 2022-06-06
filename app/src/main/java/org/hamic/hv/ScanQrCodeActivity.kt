@@ -2,6 +2,7 @@ package org.hamic.hv
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import com.budiyev.android.codescanner.AutoFocusMode
 import com.budiyev.android.codescanner.CodeScanner
 import com.budiyev.android.codescanner.CodeScannerView
